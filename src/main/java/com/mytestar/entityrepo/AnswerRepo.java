@@ -1,15 +1,14 @@
 package com.mytestar.entityrepo;
 
-import com.mytestar.entity.Category;
+import com.mytestar.entity.Answer;
 import jakarta.persistence.EntityManager;
 
 import static com.mytestar.MyListener.emf;
 
-public class CategoryRepo extends BaseRepo<Category> {
-
-    public Category getCategoryByID(Integer id) {
+public class AnswerRepo extends BaseRepo<Answer> {
+    public static Answer getAnswerByID(Integer id) {
         try (EntityManager entityManager = emf.createEntityManager()) {
-            return entityManager.find(Category.class,id);
+            return entityManager.find(Answer.class,id);
         }
         catch (Exception e) {
             throw new RuntimeException(e);

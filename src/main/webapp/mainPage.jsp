@@ -138,7 +138,7 @@
   </div>
   <!-- Right Section -->
   <div class="half-width center-content section">
-    <a href="" class="btn btn-info btn-lg">Take Test</a>
+    <a href="takeCategory.jsp" class="btn btn-info btn-lg">Take Test</a>
   </div>
 </div>
 

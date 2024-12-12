@@ -37,42 +37,27 @@
             margin-bottom: 20px;
         }
 
-        select, input, button {
-            font-size: 16px;
-            border-radius: 5px;
-            padding: 10px;
-            width: 100%;
+        .scrollable {
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        button {
-            background-color: #4A90E2;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 12px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #357ABD;
-        }
-
-        .row {
-            margin-top: 20px;
-        }
-
-        .col-md-6 {
+        .card {
             margin-bottom: 20px;
-        }
-
-        .form-control {
-            background-color: #f0f8ff;
-            border-color: #4A90E2;
         }
 
         .btn {
             font-weight: bold;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
         }
 
         /* Adjustments for responsiveness */
@@ -94,33 +79,33 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class="section w-100">
                 <h1>Choose category</h1>
-                <div class="form-group">
-                    <%
-                        if (categories.isEmpty()) {
-                    %>
-                    <div class="alert alert-warning" role="alert">Categories are not exist yet</div>
-                    <%
-                    } else {
-                    %>
-                    <form action="createTest.jsp">
-                        <label for="category">Category:</label>
-                        <select id="category" name="categoryId"  class="form-control">
-                            <%
-                                for (Category category : categories) {
-                            %>
-                            <option value="<%=category.getId()%>"><%=category.getName()%></option>
-                            <%
-                                }
-                            %>
-                        </select>
-                        <br>
-                        <button class="btn btn-primary">Start</button>
-                    </form>
-                    <%
-                    }
-                    %>
+                <form action="mainPage.jsp">
+                    <button type="submit" class="btn btn-secondary mb-3">Go back</button>
+                </form>
+                <div class="scrollable">
+                    <div class="row">
+                        <% if (categories.isEmpty()) { %>
+                        <div class="alert alert-warning" role="alert">Categories are not exist yet</div>
+                        <% } else { %>
+                        <% for (Category category : categories) { %>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=category.getName()%> (All tests:<%=category.getTestCount()%>)</h5>
+                                    <p class="card-text">Description:<br><%=category.getDescription()%></p>
+                                    <form action="createTest.jsp">
+                                        <%
+                                            request.getSession().setAttribute("categoryId",category.getId());
+                                        %>
+                                        <button type="submit" class="btn btn-primary">Select</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% } %>
+                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -131,9 +116,9 @@
                     <h2>Create new category</h2>
                     <div class="form-group">
                         <label for="newCategory">Category name:</label>
-                        <input name="categoryName" type="text" id="newCategory" class="form-control" placeholder="name of new category">
+                        <input name="categoryName" type="text" id="newCategory" class="form-control" placeholder="Name of new category">
                         <br>
-                        <input name="categoryDesc" type="text"  class="form-control" placeholder="add description of category">
+                        <input name="categoryDesc" type="text" class="form-control" placeholder="Add description of category">
                     </div>
                     <button class="btn btn-success">Create</button>
                 </form>
@@ -141,7 +126,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

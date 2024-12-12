@@ -12,4 +12,10 @@ import lombok.NoArgsConstructor;
 public class Category extends BaseEntity{
     private String name;
     private String description;
+    private Integer testCount=0;
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

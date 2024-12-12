@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Test Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,95 +16,59 @@
             margin: 0;
         }
         .container {
-            max-width: 1200px;
+            max-width: 400px;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
         }
-        .section {
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            border-radius: 8px;
+        .form-group {
             margin-bottom: 20px;
         }
-        h1, h2 {
-            color: #4A90E2;
-            margin-bottom: 20px;
+        .form-check-label {
+            margin-left: 5px;
         }
-        select, input, button {
-            font-size: 16px;
-            border-radius: 5px;
-            padding: 10px;
+        .btn-start {
             width: 100%;
-        }
-        button {
-            background-color: #4A90E2;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 12px;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #357ABD;
-        }
-        .row {
-            margin-top: 20px;
-        }
-        .col-md-6 {
-            margin-bottom: 20px;
-        }
-        .form-control {
-            background-color: #f0f8ff;
-            border-color: #4A90E2;
-        }
-        .btn {
-            font-weight: bold;
-        }
-        /* Adjustments for responsiveness */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
-        <!-- Category Selection Section (Left) -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <div class="section w-100">
-                <h1>Choose category</h1>
-                <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select id="category" name="category" class="form-control">
-                        <option value="tech">Texnologiya</option>
-                        <option value="fashion">Moda</option>
-                        <option value="music">Musiqa</option>
-                        <option value="sports">Sport</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary">Start</button>
+    <form action="submitTestDetails.jsp" method="POST">
+        <div class="form-group">
+            <label>Type</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="type" id="random" value="random" required>
+                <label class="form-check-label" for="random">Random</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="type" id="sequential" value="sequential" required>
+                <label class="form-check-label" for="sequential">Sequential</label>
             </div>
         </div>
-
-        <!-- Category Creation Section (Right) -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <div class="section w-100">
-                <h2>Create new category</h2>
-                <div class="form-group">
-                    <label for="newCategory">Category name:</label>
-                    <input type="text" id="newCategory" class="form-control" placeholder="name of new category">
-                </div>
-                <button class="btn btn-success">Create and Start</button>
+        <div class="form-group">
+            <label>Difficulty</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="difficulty" id="easy" value="easy" required>
+                <label class="form-check-label" for="easy">Easy</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="difficulty" id="normal" value="normal" required>
+                <label class="form-check-label" for="normal">Normal</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="difficulty" id="difficult" value="difficult" required>
+                <label class="form-check-label" for="difficult">Difficult</label>
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="how-many">How many?</label>
+            <input type="number" class="form-control" id="how-many" name="howMany" value="10" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-start">Start</button>
+    </form>
 </div>
-
-<!-- Bootstrap JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
